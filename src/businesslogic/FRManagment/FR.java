@@ -1,5 +1,6 @@
 package businesslogic.FRManagment;
 
+import businesslogic.CatERing;
 import persistence.BatchUpdateHandler;
 import persistence.PersistenceManager;
 import persistence.ResultHandler;
@@ -21,6 +22,12 @@ public class FR {
     public FR(String name, int id_owner) {
         this.name = name;
         this.id_owner = id_owner;
+        this.listaCompiti = new ArrayList<>();
+    }
+
+    public FR(String name) {
+        this.name = name;
+        this.id_owner = CatERing.getInstance().getUserManager().getCurrentUser().getId();
         this.listaCompiti = new ArrayList<>();
     }
 

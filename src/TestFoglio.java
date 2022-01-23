@@ -11,7 +11,7 @@ public class TestFoglio {
             CatERing.getInstance().getUserManager().login(3);
             User u = CatERing.getInstance().getUserManager().getCurrentUser();
             ServiceInfo s = new ServiceInfo("Coffee break mattino");
-            FR fr = CatERing.getInstance().getFrManager().addFoglio(s, u.getId());
+            FR fr = CatERing.getInstance().getFrManager().addFoglio(s);
             System.out.println("\nAggiorno compiti assegnando turno, cuochi e quantita' prodotte e ordino per importanza\n");
             CatERing.getInstance().getFrManager().sortCompiti();
             for(Compito c: fr.getListaCompiti()) {

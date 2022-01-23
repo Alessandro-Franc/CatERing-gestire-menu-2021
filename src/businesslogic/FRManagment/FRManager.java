@@ -39,10 +39,10 @@ public class FRManager {
         this.current_compito=c;
     }
 
-    public FR addFoglio(ServiceInfo serviceInfo, int id_user) throws UseCaseLogicException {
+    public FR addFoglio(ServiceInfo serviceInfo) throws UseCaseLogicException {
         if(CatERing.getInstance().getUserManager().getCurrentUser().isChef()) {
             String name = "Foglio Riepilogativo per il servizio "+serviceInfo.getName();
-            FR f = new FR(name, id_user);
+            FR f = new FR(name);
             setCurrent_foglio(f);
             ArrayList<String> items = Menu.loadMenuItemsById(serviceInfo.getApprovedMenu());
             notifyNewFoglio(f);
@@ -225,7 +225,7 @@ public class FRManager {
     }
 
     public void SelectFR(FR fr) throws UseCaseLogicException {
-        if(fr!=null)
+        if(fr!=null && CatERing.getInstance().getUserManager().getCurrentUser().isChef())
             setCurrent_foglio(fr);
         else throw new UseCaseLogicException();
     }
@@ -282,7 +282,7 @@ public class FRManager {
     }
 
     public void SelectCompito(Compito c) throws UseCaseLogicException {
-        if(c!=null)
+        if(c!=null && CatERing.getInstance().getUserManager().getCurrentUser().isChef())
             setCurrent_compito(c);
         else throw new UseCaseLogicException();
     }
